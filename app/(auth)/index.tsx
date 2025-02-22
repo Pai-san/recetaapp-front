@@ -1,107 +1,23 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { FoodLogo } from '@/components';
 import { Link } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-export default function HomeScreen() {
+export default function LoginScreen() {
   return (
-    <View style={styles.container}>
-      <LinearGradient
-        colors={['#FF6B6B', '#FF8E53']}
-        style={styles.headerBackground}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      />
-      <View style={styles.content}>
-        <Text style={styles.title}>Welcome to RecetaApp</Text>
-        <Text style={styles.subtitle}>Your personal recipe companion</Text>
-        
-        <View style={styles.buttonContainer}>
-          <Link href="/(auth)/login" asChild>
-            <TouchableOpacity style={styles.loginButton}>
-              <Text style={styles.loginButtonText}>Login</Text>
-            </TouchableOpacity>
-          </Link>
-
-          <Link href="/(auth)/register" asChild>
-            <TouchableOpacity style={styles.registerButton}>
-              <Text style={styles.registerButtonText}>Register</Text>
-            </TouchableOpacity>
-          </Link>
-        </View>
-      </View>
+    <View className="flex-1 justify-center bg-cyan-500">
+      <FoodLogo size={200} />
+      <Text className="text-center text-2xl text-cyan-900 font-bold">RECETAPP</Text>
+      <View className="w-48 h-1 mx-auto my-2 bg-white border-0"></View>
+      <Text className="text-center text-1xl text-cyan-900 mb-32">SAZÓN SALUDABLE</Text>
+      <Text className="text-center text-white mb-10">La cocina es un viaje donde cada receta es una nueva aventura por explorar.</Text>
+      <Link href={"/login"} asChild className="flex justify-center mb-3">
+        <TouchableOpacity className="bg-cyan-950 py-2 px-16 rounded-lg flex justify-center items-center mx-auto">
+          <Text className="text-white items-center">Login</Text>
+        </TouchableOpacity>
+      </Link>
+      <Link href="/register" className="mx-auto">
+        <Text className="text-center text-white mb-auto">Create New Account</Text>
+      </Link>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  headerBackground: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: 200,
-  },
-  content: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#fff',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 18,
-    color: '#fff',
-    textAlign: 'center',
-    marginBottom: 40,
-    opacity: 0.9,
-  },
-  buttonContainer: {
-    width: '100%',
-    maxWidth: 300,
-    gap: 16,
-  },
-  loginButton: {
-    backgroundColor: '#fff',
-    paddingVertical: 16,
-    paddingHorizontal: 32,
-    borderRadius: 12,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  loginButtonText: {
-    color: '#FF6B6B',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  registerButton: {
-    backgroundColor: 'transparent',
-    paddingVertical: 16,
-    paddingHorizontal: 32,
-    borderRadius: 12,
-    alignItems: 'center',
-    borderWidth: 2,
-    borderColor: '#fff',
-  },
-  registerButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-});
